@@ -1,6 +1,6 @@
-package ru.vlapin.experiments.ubrirproject.dao.jdbc;
+package ru.vlapin.experiments.ubrirproject.common.jdbc;
 
 public interface Entity<ID> {
   ID id();
-  void id(ID id);
+  Entity<ID> id(ID id);
 }

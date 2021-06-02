@@ -13,6 +13,7 @@ import ru.vlapin.experiments.ubrirproject.model.JavaConfigBasedSetterPropertiesP
 import ru.vlapin.experiments.ubrirproject.service.AnnotationBasedImmutablePropertiesPlaceholderExample;
 
 @SpringBootTest
+@SuppressWarnings("ClassCanBeRecord")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 class PropertiesPlaceholderExamplesTest {
 
@@ -20,14 +21,22 @@ class PropertiesPlaceholderExamplesTest {
   JavaConfigBasedSetterPropertiesPlaceholderExample jcbsppe;
   AnnotationBasedImmutablePropertiesPlaceholderExample abippe;
 
+
+
   @Test
   @SneakyThrows
   @DisplayName("Annotation based properties placeholder works correctly")
   void annotationBasedPropertiesPlaceholderWorksCorrectlyTest() {
-    assertThat(absppe)
-        .isNotNull()
-        .extracting("host", "port")
+    assertThat(absppe).isNotNull()
+        .extracting(
+            AnnotationBasedSetterPropertiesPlaceholderExample::getHost,
+            AnnotationBasedSetterPropertiesPlaceholderExample::getPort)
         .contains("localhost", 8090);
+
+    assertThat("мама мыла раму").isNotNull()
+        .startsWith("мама")
+        .endsWith("раму")
+        .hasSize(14);
   }
 
   @Test
@@ -36,7 +45,9 @@ class PropertiesPlaceholderExamplesTest {
   void javaConfigBasedPropertiesPlaceholderWorksCorrectlyTest() {
     assertThat(jcbsppe)
         .isNotNull()
-        .extracting("host", "port")
+        .extracting(
+            JavaConfigBasedSetterPropertiesPlaceholderExample::getHost,
+            JavaConfigBasedSetterPropertiesPlaceholderExample::getPort)
         .contains("my.site.com", 8080);
   }
 
@@ -46,7 +57,11 @@ class PropertiesPlaceholderExamplesTest {
   void annotationBasedImmutablePropertiesPlaceholderWorksCorrectlyTest() {
     assertThat(abippe)
         .isNotNull()
-        .extracting("authMethod", "password", "username")
+        .extracting(
+            AnnotationBasedImmutablePropertiesPlaceholderExample::getAuthMethod,
+            AnnotationBasedImmutablePropertiesPlaceholderExample::getPassword,
+            AnnotationBasedImmutablePropertiesPlaceholderExample::getUsername)
         .contains("basic", "qwerty", "user");
   }
+
 }

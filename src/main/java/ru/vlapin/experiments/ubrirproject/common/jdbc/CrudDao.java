@@ -1,4 +1,4 @@
-package ru.vlapin.experiments.ubrirproject.dao.jdbc;
+package ru.vlapin.experiments.ubrirproject.common.jdbc;
 
 import java.util.Optional;
 import java.util.stream.Stream;

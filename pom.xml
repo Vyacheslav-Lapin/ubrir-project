@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.4</version>
+    <version>2.4.5</version>
   </parent>
 
   <groupId>ru.vlapin.experiments</groupId>
@@ -23,7 +23,7 @@
     <spring-cloud.version>2020.0.2</spring-cloud.version>
     <!--endregion-->
 
-    <testcontainers.version>1.15.2</testcontainers.version>
+    <testcontainers.version>1.15.3</testcontainers.version>
 
     <!--region Libs-->
     <vavr.version>0.10.3</vavr.version>
@@ -31,9 +31,9 @@
     <checker.version>3.12.0</checker.version>
     <annotations.version>20.1.0</annotations.version>
     <jcip-annotations.version>1.0</jcip-annotations.version>
-    <spotbugs.version>4.2.2</spotbugs.version>
+    <spotbugs.version>4.2.3</spotbugs.version>
     <error_prone_annotations.version>2.6.0</error_prone_annotations.version>
-    <springdoc-openapi.version>1.5.6</springdoc-openapi.version>
+    <springdoc-openapi.version>1.5.7</springdoc-openapi.version>
     <!--endregion-->
 
     <!--region Test-libs-->
@@ -54,6 +54,8 @@
     <lombok.addOutputDirectory>false</lombok.addOutputDirectory>
     <lombok.sourceDirectory>${project.basedir}/src/main/java</lombok.sourceDirectory>
     <lombok.testSourceDirectory>${project.basedir}/src/test/java</lombok.testSourceDirectory>
+    <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
+    <checkstyle.version>8.29</checkstyle.version>
     <!--endregion-->
 
   </properties>
@@ -69,6 +71,10 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jdbc</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -308,7 +314,7 @@
               <processorPath>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>2.4.4</version>
+                <version>2.4.5</version>
               </processorPath>
             </annotationProcessorPaths>
             <annotationProcessors>
@@ -428,6 +434,27 @@
           <groupId>org.projectlombok</groupId>
           <artifactId>lombok-maven-plugin</artifactId>
           <version>${lombok-maven-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${maven-checkstyle-plugin.version}</version>
+          <configuration><!--http://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html-->
+            <configLocation>google_checks.xml</configLocation>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>${checkstyle.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
       </plugins>
     </pluginManagement>

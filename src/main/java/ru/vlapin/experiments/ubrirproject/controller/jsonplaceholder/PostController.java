@@ -26,7 +26,7 @@ public class PostController {
   }
 
   @NotNull
-  @GetMapping("{id}")
+  @GetMapping(path = "{id}", produces = "application/json")
   public Post get(@PathVariable @NotNull Long id) {
     return postService.findById(id);
   }
