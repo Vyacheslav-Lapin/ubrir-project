@@ -1,0 +1,14 @@
+POST localhost:9091/medium/ws/calculatorDemo
+Content-Type: text/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns="http://medium.com/types/calculator">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <AdditionInput>
+      <number1>2</number1>
+      <number2>4</number2>
+    </AdditionInput>
+  </soapenv:Body>
+</soapenv:Envelope>

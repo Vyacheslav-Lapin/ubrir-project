@@ -45,6 +45,6 @@ public final class AnnotationBasedImmutablePropertiesPlaceholderExample {
 
   @PostConstruct
   private void init() {
-    System.out.println("toString() = " + toString());
+    System.out.println("toString() = " + this);
   }
 }

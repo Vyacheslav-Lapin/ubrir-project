@@ -3,3 +3,12 @@ mail:
     authMethod: basic
     username: user
     password: qwerty
+
+#spring:
+#  jpa:
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto:
+
+server:
+  port: 9091

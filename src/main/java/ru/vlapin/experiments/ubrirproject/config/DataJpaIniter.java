@@ -20,17 +20,16 @@ import ru.vlapin.experiments.ubrirproject.dao.CatRepository;
 import ru.vlapin.experiments.ubrirproject.model.Cat;
 
 @Component
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Loggable(WARN)
-//@RequiredArgsConstructor
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class DataJpaIniter implements ApplicationRunner, Dater {
 
   @NonFinal
   @Setter(value = PRIVATE, onMethod_ = @Autowired)
   CatRepository catRepository;
 
-  @NonFinal
   @Setter
+  @NonFinal
   String x;
 
   @PostConstruct
@@ -40,7 +39,7 @@ public class DataJpaIniter implements ApplicationRunner, Dater {
 
   @EventListener
   public void afterContextInitialization(ContextRefreshedEvent __) {
-    System.out.println("!");
+    System.out.println("ContextRefreshedEvent!");
   }
 
   @Override

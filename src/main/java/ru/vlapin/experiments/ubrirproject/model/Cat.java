@@ -16,7 +16,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@Data
+@Data //@ToString, @Getter
 @Entity
 @Setter(PRIVATE)
 @NoArgsConstructor
