@@ -23,5 +23,17 @@ class DefaultJacksonSerializationBehaviourJsonTest extends JacksonJsonTestSuppor
           "z": true
         }""");
   }
+
+  @Test
+  @DisplayName("JsonAny{Getter/Setter} annotations works correctly")
+  void jsonAnyGetterAndSetterAnnotationsWorksCorrectlyTest() {
+    testViaSendAndReceiveAsResponse("/jags", """
+        {
+           "name": "My bean",
+           "attrString": "val1",
+           "id": 1,
+           "isAvailable": true
+        }""");
+  }
 }
 

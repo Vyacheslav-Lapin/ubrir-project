@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.vlapin.experiments.ubrirproject.model.jackson.DefaultJacksonDemoBean;
+import ru.vlapin.experiments.ubrirproject.model.jackson.JsonAnyGSetterDemoBean;
 
 @RestController
 @RequestMapping("jackson")
@@ -16,6 +17,13 @@ public class JacksonDemoController {
   @PostMapping("default")
   public ResponseEntity<DefaultJacksonDemoBean> defaultJacksonExample(
       @RequestBody DefaultJacksonDemoBean demoBean) {
+    return ResponseEntity.ok(demoBean);
+  }
+
+  @NotNull
+  @PostMapping("/jags")
+  public ResponseEntity<JsonAnyGSetterDemoBean> jsonAnyGetterSetterExample(
+      @RequestBody JsonAnyGSetterDemoBean demoBean) {
     return ResponseEntity.ok(demoBean);
   }
 }
